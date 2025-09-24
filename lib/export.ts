@@ -14,12 +14,12 @@ export function exportToPDF(data: RoiCalculatorFormData, results: CalculationRes
   let yPos = margin
 
   // Define Asuno brand colors (RGB values for jsPDF)
-  const asunoBlue = [0, 128, 255] // #0080FF
-  const darkGray = [51, 51, 51]   // #333
-  const lightGray = [128, 128, 128] // #808080
-  const successGreen = [34, 197, 94] // #22C55E
-  const warningOrange = [245, 158, 11] // #F59E0B
-  const errorRed = [239, 68, 68] // #EF4444
+  const asunoBlue: [number, number, number] = [0, 128, 255] // #0080FF
+  const darkGray: [number, number, number] = [51, 51, 51]   // #333
+  const lightGray: [number, number, number] = [128, 128, 128] // #808080
+  const successGreen: [number, number, number] = [34, 197, 94] // #22C55E
+  const warningOrange: [number, number, number] = [245, 158, 11] // #F59E0B
+  const errorRed: [number, number, number] = [239, 68, 68] // #EF4444
 
   const addHeader = () => {
     // Header background
@@ -83,7 +83,7 @@ export function exportToPDF(data: RoiCalculatorFormData, results: CalculationRes
     yPos += 10
   }
 
-  const addKPICard = (title: string, value: string, color: number[] = darkGray, x: number, width: number) => {
+  const addKPICard = (title: string, value: string, color: [number, number, number] = darkGray, x: number, width: number) => {
     // Card background
     doc.setFillColor(248, 250, 252) // slate-50
     doc.setDrawColor(226, 232, 240) // slate-200
