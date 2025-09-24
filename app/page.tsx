@@ -77,7 +77,7 @@ export default function Home() {
       id: generateProcessId(),
       name: `Process ${processes.length + 1}`,
       processDescription: '',
-    }
+    } as Process
     const updatedProcesses = [...processes, newProcess]
     setProcesses(updatedProcesses)
     setActiveProcessId(newProcess.id)
@@ -132,7 +132,7 @@ export default function Home() {
           ...urlData,
           id: generateProcessId(),
           name: 'Shared Process',
-        }
+        } as Process
         setProcesses([newProcess])
         setActiveProcessId(newProcess.id)
         toast({
@@ -161,7 +161,7 @@ export default function Home() {
               ...parsedData,
               id: generateProcessId(),
               name: 'Process 1',
-            }
+            } as Process
             setProcesses([singleProcess])
             setActiveProcessId(singleProcess.id)
           }
@@ -171,7 +171,7 @@ export default function Home() {
             ...DEFAULT_VALUES,
             id: generateProcessId(),
             name: 'Process 1',
-          }
+          } as Process
           setProcesses([defaultProcess])
           setActiveProcessId(defaultProcess.id)
         }
@@ -180,7 +180,7 @@ export default function Home() {
           ...DEFAULT_VALUES,
           id: generateProcessId(),
           name: 'Process 1',
-        }
+        } as Process
         setProcesses([defaultProcess])
         setActiveProcessId(defaultProcess.id)
         toast({
