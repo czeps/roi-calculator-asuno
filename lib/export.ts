@@ -224,7 +224,7 @@ export function parseShareUrl(searchParams: URLSearchParams): Partial<RoiCalcula
   try {
     const data: any = {}
 
-    for (const [key, value] of searchParams.entries()) {
+    searchParams.forEach((value, key) => {
       try {
         data[key] = JSON.parse(value)
       } catch {
@@ -236,7 +236,7 @@ export function parseShareUrl(searchParams: URLSearchParams): Partial<RoiCalcula
           data[key] = value
         }
       }
-    }
+    })
 
     return Object.keys(data).length > 0 ? data : null
   } catch {

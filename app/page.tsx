@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Download, Share2, FileText, Link } from 'lucide-react'
 import { Header } from '@/components/Header'
@@ -29,7 +29,7 @@ interface Process extends RoiCalculatorFormData {
   name: string
 }
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams()
   const { toast } = useToast()
   const [processes, setProcesses] = useState<Process[]>([])
@@ -77,7 +77,7 @@ export default function Home() {
       id: generateProcessId(),
       name: `Process ${processes.length + 1}`,
       processDescription: '',
-    } as Process
+    }
     const updatedProcesses = [...processes, newProcess]
     setProcesses(updatedProcesses)
     setActiveProcessId(newProcess.id)
@@ -132,7 +132,7 @@ export default function Home() {
           ...urlData,
           id: generateProcessId(),
           name: 'Shared Process',
-        } as Process
+        }
         setProcesses([newProcess])
         setActiveProcessId(newProcess.id)
         toast({
@@ -161,7 +161,7 @@ export default function Home() {
               ...parsedData,
               id: generateProcessId(),
               name: 'Process 1',
-            } as Process
+            }
             setProcesses([singleProcess])
             setActiveProcessId(singleProcess.id)
           }
@@ -171,7 +171,7 @@ export default function Home() {
             ...DEFAULT_VALUES,
             id: generateProcessId(),
             name: 'Process 1',
-          } as Process
+          }
           setProcesses([defaultProcess])
           setActiveProcessId(defaultProcess.id)
         }
@@ -180,7 +180,7 @@ export default function Home() {
           ...DEFAULT_VALUES,
           id: generateProcessId(),
           name: 'Process 1',
-        } as Process
+        }
         setProcesses([defaultProcess])
         setActiveProcessId(defaultProcess.id)
         toast({
@@ -352,5 +352,15 @@ export default function Home() {
       <Footer />
       <Toaster />
     </>
+  )
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+    </div>}>
+      <HomeContent />
+    </Suspense>
   )
 }

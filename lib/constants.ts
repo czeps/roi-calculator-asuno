@@ -46,7 +46,7 @@ export const DEFAULT_VALUES = {
   avgSalary: 4000,
   salaryPeriod: 'monthly' as const,
   industry: 'Technology',
-  department: 'Operations',
+  department: 'Operations' as const,
   category: ['data-entry', 'reporting'],
   processDescription: 'Weekly reporting and data consolidation across spreadsheets.',
   errorRatePct: 0,
