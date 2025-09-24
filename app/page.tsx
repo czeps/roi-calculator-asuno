@@ -300,22 +300,6 @@ function HomeContent() {
                   </div>
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  <Button onClick={handleExportPDF} size="sm">
-                    <FileText className="h-4 w-4 mr-2" />
-                    Export PDF
-                  </Button>
-                  <Button onClick={handleExportCSV} variant="outline" size="sm">
-                    <Download className="h-4 w-4 mr-2" />
-                    Export CSV
-                  </Button>
-                  <Button onClick={handleCopyShareLink} variant="outline" size="sm">
-                    <Link className="h-4 w-4 mr-2" />
-                    Copy Share Link
-                  </Button>
-                </div>
-              </CardContent>
             </Card>
 
             {/* Dynamic Content Based on View */}
@@ -332,6 +316,35 @@ function HomeContent() {
                 {/* Process Comparison */}
                 <ProcessComparison processes={processes} />
               </>
+            )}
+
+            {/* Export Section - shown when there's content to export */}
+            {((currentView === 'single' && activeProcess) ||
+              (currentView === 'comparison' && processes.length >= 2)) && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Export & Share</CardTitle>
+                  <CardDescription>
+                    Download your analysis or share it with others
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    <Button onClick={handleExportPDF} size="sm">
+                      <FileText className="h-4 w-4 mr-2" />
+                      Export PDF
+                    </Button>
+                    <Button onClick={handleExportCSV} variant="outline" size="sm">
+                      <Download className="h-4 w-4 mr-2" />
+                      Export CSV
+                    </Button>
+                    <Button onClick={handleCopyShareLink} variant="outline" size="sm">
+                      <Link className="h-4 w-4 mr-2" />
+                      Copy Share Link
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             )}
 
             {/* Fallback when no appropriate view is available */}

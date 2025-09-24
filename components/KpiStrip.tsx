@@ -43,24 +43,24 @@ export function KpiStrip({ results, currency }: KpiStripProps) {
   ]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
       {kpis.map((kpi, index) => {
         const Icon = kpi.icon
         return (
           <Card key={index} className="hover:shadow-md transition-shadow">
-            <CardContent className="p-4">
-              <div className="flex items-center space-x-2">
-                <div className={`rounded-lg p-2 bg-slate-100 dark:bg-slate-800`}>
-                  <Icon className={`h-4 w-4 ${kpi.color}`} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-muted-foreground truncate">
+            <CardContent className="p-3 sm:p-4">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <div className={`rounded-md p-1.5 bg-slate-100 dark:bg-slate-800 flex-shrink-0`}>
+                    <Icon className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${kpi.color}`} />
+                  </div>
+                  <p className="text-xs sm:text-sm font-medium text-muted-foreground leading-tight">
                     {kpi.title}
                   </p>
-                  <p className={`text-lg font-bold ${kpi.color} truncate`}>
-                    {kpi.value}
-                  </p>
                 </div>
+                <p className={`text-lg sm:text-xl lg:text-2xl font-bold ${kpi.color} leading-tight break-all`}>
+                  {kpi.value}
+                </p>
               </div>
             </CardContent>
           </Card>
